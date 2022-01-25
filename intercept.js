@@ -19,21 +19,21 @@ module.exports = targets => {
     } = targets.of('@magento/venia-ui');
     checkoutPagePaymentTypes.tap(payments =>
         payments.add({
-            paymentCode: 'checkmo',
+            paymentCode: 'paypal_express',
             importPath:
                 '@magento/magento-pwa-paypal/src/components/paypal.js'
         })
     );
     editablePaymentTypes.tap(editablePaymentTypes => {
         editablePaymentTypes.add({
-            paymentCode: 'checkmo',
+            paymentCode: 'paypal_express',
             importPath:
                 '@magento/magento-pwa-paypal/src/components/edit.js'
         });
     });
     summaryPagePaymentTypes.tap(paymentSummaries =>
         paymentSummaries.add({
-            paymentCode: 'checkmo',
+            paymentCode: 'paypal_express',
             importPath:
                 '@magento/magento-pwa-paypal/src/components/summary.js'
         })
