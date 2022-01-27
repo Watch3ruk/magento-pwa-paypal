@@ -51,5 +51,5 @@ module.exports = targets => {
 
     buildpackTargets.webpackCompiler.tap(compiler => {
         new moduleOverrideWebpackPlugin(componentOverrideMapping).apply(compiler);
-    });
+    }); 
 };
