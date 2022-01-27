@@ -1,16 +1,25 @@
 {
-  "name": "@magento/magento-pwa-paypal",
+  "name": "@watch3r/magento-pwa-paypal",
   "version": "0.0.1",
-  "publishConfig": {
-    "access": "public"
+  "main": "src/index.js",
+  "pwa-studio": {
+    "targets": {
+      "intercept": "src/intercept.js"
+    }
   },
-  "description": "Ads Paypal Express Payment Method for PWA Studio.",
-  "main": "./intercept.js",
   "scripts": {
-    "clean": " "
+    "format": "prettier --ignore-path .gitignore \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"src/**/*.+(ts|js|tsx)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" --write",
+    "lint": "eslint --ignore-path .gitignore 'src/**/{*.js,package.json}'",
+    "test": "jest",
+    "test:dev": "jest --watch",
+    "prepare": "install-peers"
   },
-  "repository": "github:magento/pwa-studio",
-  "license": "(OSL-3.0 OR AFL-3.0)",
+  "lint-staged": {
+    "./src/**/*.{ts,js,jsx,tsx}": [
+      "yarn lint --fix",
+      "yarn format"
+    ]
+  },
   "peerDependencies": {
     "@magento/peregrine": "~12.1.0",
     "@magento/pwa-buildpack": "~11.0.0",
@@ -19,9 +28,17 @@
     "react-intl": "~5.20.0",
     "react-router-dom": "~5.2.0"
   },
-  "pwa-studio": {
-    "targets": {
-      "intercept": "./intercept"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
     }
+  },
+  "devDependencies": {
+    "install-peers-cli": "^2.2.0"
+  },
+  "dependencies": {
+    "@magento/peregrine": "~12.1.0",
+    "@magento/pwa-buildpack": "~11.0.0",
+    "@magento/venia-ui": "~9.1.0"
   }
 }
