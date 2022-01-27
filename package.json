@@ -4,7 +4,8 @@
   "main": "src/index.js",
   "pwa-studio": {
     "targets": {
-      "intercept": "src/intercept.js"
+      // "intercept": "src/intercept.js" // version that overwrites 
+       "intercept": "./intercept.js" //version that extends 
     }
   },
   "scripts": {
