@@ -86,8 +86,8 @@ CheckMo.propTypes = {
 };
 
 CheckMo.defaultProps = {
-    payableTo: 'IR Trading LTD.',
-    mailingAddress: 'IR Trading LTD\r\nAccount: xx xx xx\r\nSort Code: xx xx xx \r\n'
+    payableTo: '',
+    mailingAddress: ''
 };
 
 export default CheckMo;
