@@ -18,6 +18,11 @@ import { useStyle } from '@magento/venia-ui/lib/classify';
 import defaultClasses from '@magento/venia-ui/lib/components/CheckoutPage/PaymentInformation/creditCard.module.css';
 import FormError from '@magento/venia-ui/lib/components/FormError';
 import GoogleReCaptcha from '@magento/venia-ui/lib/components/GoogleReCaptcha';
+import {
+    PayPalScriptProvider,
+    usePayPalScriptReducer
+} from '@paypal/react-paypal-js';
+
 
 const STEP_DESCRIPTIONS = [
     { defaultMessage: 'Loading Payment', id: 'checkoutPage.step0' },
@@ -49,7 +54,9 @@ const CreditCard = props => {
         onPaymentReady: onReady,
         onPaymentError: onError,
         resetShouldSubmit,
-        shouldSubmit
+        shouldSubmit,
+        paymentCode,
+        history
     } = props;
     const { formatMessage } = useIntl();
 
@@ -60,7 +67,8 @@ const CreditCard = props => {
         onReady,
         onError,
         shouldSubmit,
-        resetShouldSubmit
+        resetShouldSubmit,
+        paymentCode
     });
 
     const {
@@ -77,16 +85,17 @@ const CreditCard = props => {
          *
          * `0` No call made yet
          * `1` Billing address mutation intiated
-         * `2` Stripe paymentIntent requsted
+         * `2` Paypal paymentIntent requsted
          * `3` Payment information mutation intiated
          * `4` All mutations done
          */
         stepNumber,
         initialValues,
         shippingAddressCountry,
-        shouldTeardownDropin,
-        resetShouldTeardownDropin,
-        recaptchaWidgetProps
+        cartTotalData,
+        setPayerData,
+        token,
+        paypalLoading
     } = talonProps;
 
     const creditCardComponentClassName = isLoading
