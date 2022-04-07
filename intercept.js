@@ -14,8 +14,8 @@ module.exports = targets => {
     });
 
     const {
-        checkoutPagePaymentTypes,
-        editablePaymentTypes,
+       // checkoutPagePaymentTypes,
+// editablePaymentTypes,
         summaryPagePaymentTypes
     } = targets.of('@magento/venia-ui');
     checkoutPagePaymentTypes.tap(payments =>
@@ -25,18 +25,18 @@ module.exports = targets => {
                 '@watch3r/magento-pwa-paypal/src/components/paypal.js'
         })
     );
-    editablePaymentTypes.tap(editablePaymentTypes => {
-        editablePaymentTypes.add({
-            paymentCode: 'paypal_express',
-            importPath:
-                '@watch3r/magento-pwa-paypal/src/components/edit.js'
-        });
-    });
-    summaryPagePaymentTypes.tap(paymentSummaries =>
-        paymentSummaries.add({
-            paymentCode: 'paypal_express',
-            importPath:
-                '@watch3r/magento-pwa-paypal/src/components/summary.js'
-        })
-    );
-};
+//     editablePaymentTypes.tap(editablePaymentTypes => {
+//         editablePaymentTypes.add({
+//             paymentCode: 'paypal_express',
+//             importPath:
+//                 '@watch3r/magento-pwa-paypal/src/components/edit.js'
+//         });
+//     });
+//     summaryPagePaymentTypes.tap(paymentSummaries =>
+//         paymentSummaries.add({
+//             paymentCode: 'paypal_express',
+//             importPath:
+//                 '@watch3r/magento-pwa-paypal/src/components/summary.js'
+//         })
+//     );
+// };
